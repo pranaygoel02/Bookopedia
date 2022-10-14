@@ -1,0 +1,157 @@
+.BookContainer{
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    gap: 1rem;
+    /* flex-wrap: wrap; */
+    /* align-items: stretch; */
+    /* justify-content: center ; */
+}
+/* .BookContainer::-webkit-scrollbar{
+    display: none;
+} */
+.BookContainer h1{
+    font-size: 1.5rem;
+}
+.fixed{
+    /* position: fixed; */
+    max-height: 100vh;
+    overflow: scroll;
+}
+.fixed::-webkit-scrollbar{
+    display: none;
+}
+.auto-margin{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+    margin: auto;
+}
+.searchBar{
+    /* background-color: #2476e28a; */
+    /* border-radius: 17em; */
+    /* height: 2em; */
+    display: flex;
+    /* margin: 0.5em auto; */
+    align-self: flex-start;
+    /* position: absolute; */
+    top: 0;
+    right: 0;
+    z-index: 1;
+    /* background: rgb(226, 164,164); */
+    padding: 0.5em;
+    justify-content: flex-end;
+    align-items: center;
+    width: fit-content;
+}
+.searchBar input{
+    background-color: transparent;
+    padding: 0.86em 1em;
+    border: 1px solid rgba(50, 50, 50, 0.342);
+    /* color: white; */
+    font-size: 1em;
+    margin: 0;
+    border-radius: 1em 0 0 1em;
+    background: rgb(144, 172, 187);
+}
+.searchBar input::placeholder{
+    color: rgba(0, 0, 0, 0.521);
+}
+.searchBar input:focus{
+    outline: none;
+    /* border: 1px solid #2476e28a; */
+}
+.searchBtn{
+    width: auto;
+    margin: 0;
+    border-radius: 0 1em 1em 0;
+    /* background: transparent; */
+    background: rgb(144, 172, 187);
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+.new-listings{
+    display: flex;
+    overflow-x: scroll;
+    margin: 0;
+    gap: 1em;
+    transition: all 1s ease;
+}
+.new-listings::-webkit-scrollbar{
+    display: none;
+}
+.BookContainer::-webkit-scrollbar{
+    display: none;
+}
+.hide{
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: all 100ms ease;
+}
+.new-list-btn{
+    display: flex;
+    background-color: rgb(150, 210, 246);
+    margin: 0.5em 0; 
+    width: fit-content;
+    justify-self: flex-start;
+    border-radius: 0 0.5em 0.5em 0;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 2px 3px 10px rgba(7, 15, 20, 0.384);
+    box-shadow: inset 0px 2px 10px rgba(26, 62, 83, 0.527);
+}
+/* .new-list-btn:hover::before{
+    content: '>';
+} */
+@media only screen and (min-width:820px){
+    .new-listings{
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        overflow-x: scroll;
+        margin: 0;
+        gap: 1em;
+        max-height: 100vh;
+        /* max-width: 300px; */
+        padding: 1em;
+        padding-top: 5em;
+        /* padding-bottom: 10em; */
+        align-content: space-between;
+        align-items: flex-end;
+        transition: all 1s ease;
+    }
+    .BookContainer{
+        display: flex;
+        flex-direction: row;
+        overflow-y: scroll;
+        gap: 1rem;
+        flex-wrap: wrap;
+        /* align-items: stretch; */
+        justify-content: flex-start ;
+        max-height: 111vh;
+        padding: 1em;
+        padding-bottom: 6em;
+    }
+    .searchBar{
+        /* background-color: #2476e28a; */
+        /* border-radius: 17em; */
+        /* height: 2em; */
+        display: flex;
+        /* margin: 0.5em auto; */
+        align-self: flex-start;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        /* background: rgb(226, 164,164); */
+        padding: 0.5em;
+        justify-content: flex-end;
+        align-items: center;
+        width: min-content;
+    }
+}

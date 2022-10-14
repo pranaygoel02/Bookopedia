@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html{
+    /* background: linear-gradient(to bottom right, rgba(84, 18, 236), rgba(186, 18, 183)); */
+    background-repeat: no-repeat;
+    /* max-height: 100vh; */
+    /* color: white; */
+    background: rgb(26, 53, 72);
+}
+html::-webkit-scrollbar{
+    display: none;
+}
+body{
+    margin: 0px;
+    font-family: 'Poppins';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    /* height: 100vh; */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+/* .container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+} */
+.Pagination{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(176deg,transparent 50%,rgba(15, 31, 43, 0.89));
+    gap:0.5em;
+    padding: 1em;
+    padding-right: 5em;
+    color: white;
+}
+
+.partition{
+    display: flex;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+}
+.welcome{
+    display:flex;
+    flex-direction: column;
+    padding:0.5em;
+    margin-top:1em;
+    align-items:center;
+    justify-content: center;
+}
+.welcome h1{
+    line-height:1.2em;
+    color:white;
+    justify-content:center;
+    align-items:center;
+    /* width:45%; */
+    padding:1em;
+    font-size:2.2em;
+    text-align: center;
+}
+.welcome img{
+    width: 100%;
+}
+button{
+    background-color: #3a58ff;
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: 0.4em;
+    /* margin: 1em 0.3em; */
+    font-size: 1rem;
+    color: white;
+}
+
+@media only screen and (min-width:820px){
+    .partition{
+        flex-direction: row;
+        gap: 1em
+    }
+    .welcome{
+        display:flex;
+        flex-direction: row;
+        padding:0.5em;
+        margin-top:1em;
+        align-items:center
+    }
+    .welcome h1{
+        line-height:1.2em;
+        color:white;
+        justify-content:center;
+        align-items:center;
+        width:50%;
+        padding-left:1em;
+        font-size:3.5em;
+        line-height: 1.4;
+        text-align: left;
+        font-weight: 500;
+    }
+    .welcome span{
+        font-size: larger;
+        font-weight: 600;
+    }
+    .welcome img{
+        width: 40%;
+    }
+}
