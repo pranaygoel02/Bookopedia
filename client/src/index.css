@@ -50,6 +50,11 @@ body{
     color: white;
 }
 
+#download-btn::before{
+    content: 'Download PDF';
+    display: inline-block;
+}
+
 .partition{
     display: flex;
     flex-direction: column;
