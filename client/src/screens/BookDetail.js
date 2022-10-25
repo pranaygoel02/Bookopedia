@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext,useState,useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import {useBooks} from '../BookContext'
 import BookTitle from '../components/BookCard/BookTitle'
@@ -15,9 +15,29 @@ function BookDetail() {
   console.log('currBooks: ',currBooks);
   const result_curr = currBooks?.find(({ isbn13 }) => isbn13 === isbn);
   const result_new = newlisting?.find(({ isbn13 }) => isbn13 === isbn);
-  const book = result_curr ? result_curr : result_new
+  const [downloadLink,setDownloadLink] =  useState('')
+  const [book, setBook] = useState(result_curr ? result_curr : result_new);
+  // const book_data = result_curr ? result_curr : result_new
+
+let download = async () => {
+  fetch(`download/${book?.isbn10}`).then(res=> res.json()).then(data => {
+    setDownloadLink(prev=>data.download)
+    // return data.download
+  })
+}
+  // useEffect(() => {
+    
+  //   book = window.localStorage.getItem('book');
+  // }, []);
+
+  useEffect(()=>{
+    window.localStorage.setItem('Book',JSON.stringify(book))
+  },[book])
+
+  
   return (
-    <div style={{flex:1,display:'flex',alignContent:'center',color:'whitesmoke',maxWidth:'95vw',justifyContent:'center'}}>
+    book && 
+    <div className='book-detail-container' style={{flex:1,display:'flex',alignContent:'center',color:'whitesmoke',justifyContent:'center'}}>
       <div style={{display:'flex',flexBasis:'30%',alignItems:'center',justifyContent:'center'}}>
       <img style={{width:'100%'}} src={book.image}></img>
       </div>

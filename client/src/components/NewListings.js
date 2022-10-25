@@ -44,6 +44,7 @@ export default function NewListings() {
     useEffect(()=>{
         console.log('setting new listssss..........');
         newlisting.length != 20 && setnewlistings(prev=>[...new Set([...NewBooks])])
+        window.localStorage.setItem('NEW_BOOKS',JSON.stringify([...NewBooks]))
     },[NewBooks])
     
     return (

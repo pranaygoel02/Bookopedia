@@ -7,6 +7,7 @@ const app = express()
 const newAPI = "https://api.itbook.store/1.0/new"
 const api1 = "https://api.itbook.store/1.0/search/"
 const api2 = "https://api.itbook.store/1.0/books/"
+const downloadUrl = "https://www.dbooks.org/api/book/"
 
 app.get("/new-books",(req,res)=>{
     console.log('fetching new books');
@@ -24,10 +25,16 @@ app.get("/searchBook/:query/:pageNumber",(req,res)=>{
 })
 
 app.get("/searchIsbn/:isbn",(req,res)=>{
+    console.log('getting download link');
     const {isbn} = req.params
     fetch(`${api2}/${isbn}`).then(response => response.json()).then(data => {
         res.json(data);
     })
+})
+
+app.get("/download/:isbn",(req,res)=>{
+    const {isbn} = req.params
+    fetch(`${downloadUrl}/${isbn}`).then(response=>response.json()).then(data=>res.json(data))
 })
 
 app.listen(5000,()=> {console.log("Server started at port 5000")})
