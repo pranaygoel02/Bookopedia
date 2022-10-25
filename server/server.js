@@ -37,5 +37,13 @@ app.get("/download/:isbn",(req,res)=>{
     fetch(`${downloadUrl}/${isbn}`).then(response=>response.json()).then(data=>res.json(data))
 })
 
+const path = require('path')
+
+app.use(express.static(path.join(__dirname,"client/build")))
+
+app.get('*',(req,res)=>{    
+    res.sendFile(path.join(__dirname,"./client/build/index.html"))
+})
+
 
 app.listen(5000,()=> {console.log("Server started at port 5000")})
