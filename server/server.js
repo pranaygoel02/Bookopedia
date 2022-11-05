@@ -9,6 +9,12 @@ const api1 = "https://api.itbook.store/1.0/search/"
 const api2 = "https://api.itbook.store/1.0/books/"
 const downloadUrl = "https://www.dbooks.org/api/book/"
 
+
+app.get("/", (req,res)=>{
+    res.send("Hello");
+})
+
+
 app.get("/new-books",(req,res)=>{
     console.log('fetching new books');
     fetch(newAPI).then(response => response.json()).then(data=>{
@@ -37,4 +43,15 @@ app.get("/download/:isbn",(req,res)=>{
     fetch(`${downloadUrl}/${isbn}`).then(response=>response.json()).then(data=>res.json(data))
 })
 
-app.listen(5000,()=> {console.log("Server started at port 5000")})
+const path = require('path')
+
+app.use(express.static(path.join(__dirname,"client/build")))
+
+app.get('*',(req,res)=>{    
+    res.sendFile(path.join(__dirname,"./client/build/index.html"))
+})
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, ()=>{
+    console.log(`server started at port ${PORT}`);
+})
