@@ -33,8 +33,11 @@ export default function BookSearch() {
     },[val])
 
     Books.sort((a, b) => a.title.localeCompare(b.title))
+    
     useEffect(()=>{
         setCurrBooks(prev=>[...Books])
+        window.localStorage.setItem('SEARCH_BOOKS',JSON.stringify([...Books]))
     },[Books])
+
     return {loading,error,Books,totalBooks}
 }
