@@ -1,4 +1,5 @@
 const {fetch} = require ('cross-fetch')
+import axios from 'axios'
 
 const { response } = require('express')
 const express = require('express')
@@ -18,7 +19,7 @@ app.get("/", (req,res)=>{
 
 app.get("/new-books",(req,res)=>{
     console.log('fetching new books');
-    fetch(newAPI).then(response => response.json()).then(data=>{
+    axios.get(newAPI).then(response => response.json()).then(data=>{
         res.json(data);
     });
 })
@@ -26,7 +27,7 @@ app.get("/new-books",(req,res)=>{
 app.get("/searchBook/:query/:pageNumber",(req,res)=>{
     console.log(req.params);
     const {query,pageNumber} = req.params
-    fetch(`${api1}/${query}/${pageNumber}`).then(response => response.json()).then(data => {
+    axios.get(`${api1}/${query}/${pageNumber}`).then(response => response.json()).then(data => {
         res.json(data);
     })
 })
@@ -34,14 +35,14 @@ app.get("/searchBook/:query/:pageNumber",(req,res)=>{
 app.get("/searchIsbn/:isbn",(req,res)=>{
     console.log('getting download link');
     const {isbn} = req.params
-    fetch(`${api2}/${isbn}`).then(response => response.json()).then(data => {
+    axios.get(`${api2}/${isbn}`).then(response => response.json()).then(data => {
         res.json(data);
     })
 })
 
 app.get("/download/:isbn",(req,res)=>{
     const {isbn} = req.params
-    fetch(`${downloadUrl}/${isbn}`).then(response=>response.json()).then(data=>res.json(data))
+    axios.get(`${downloadUrl}/${isbn}`).then(response=>response.json()).then(data=>res.json(data))
 })
 
 const path = require('path')

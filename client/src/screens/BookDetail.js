@@ -8,6 +8,7 @@ import '../index.css'
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import DownloadIcon from '@mui/icons-material/Download';
 import CircularProgress from '@mui/material/CircularProgress';
+import axios from 'axios';
 
 
 function BookDetail() {
@@ -25,7 +26,7 @@ function BookDetail() {
 
 let download = async () => {
   setGetting(prev=>true)
-  fetch(`${process.env.REACT_APP_BACKEND_URL}/download/${book?.isbn10}`).then(res=> res.json()).then(data => {
+  axios.get(`${process.env.REACT_APP_BACKEND_URL}/download/${book?.isbn10}`).then(res=> res.json()).then(data => {
     setDownloadLink(prev=>data.download)
     console.log(data.download);
     setGetting(prev=>false)

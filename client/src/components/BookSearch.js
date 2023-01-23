@@ -15,11 +15,11 @@ export default function BookSearch() {
         console.log('====================================');
         setLoading(true)
         setError(false)
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/searchBook/${val}/${pageNumber}`).then(res => res.json()).then(data => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/searchBook/${val}/${pageNumber}`).then(res => res.json()).then(data => {
             // setBooks([])
             setTotalBooks(data.total)
             return ([...data.books.map(b => {
-                    fetch(`${process.env.REACT_APP_BACKEND_URL}/searchIsbn/${b.isbn13}`).then(res => res.json()).then(isbnData => {
+                    axios.get(`${process.env.REACT_APP_BACKEND_URL}/searchIsbn/${b.isbn13}`).then(res => res.json()).then(isbnData => {
                         // console.log(isbnData)
                         setBooks(prevBooks => [...prevBooks,isbnData])
                     })    

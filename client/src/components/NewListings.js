@@ -14,9 +14,9 @@ export default function NewListings() {
 
     const fetchData = useCallback( async () => {
         console.log('fetching data');
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/new-books`).then(res => res.json()).then(data => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/new-books`).then(res => res.json()).then(data => {
             return ([...data.books.map(b => {
-                    fetch(`${process.env.REACT_APP_BACKEND_URL}/searchIsbn/${b.isbn13}`).then(res => res.json()).then(isbnData => {
+                    axios.get(`${process.env.REACT_APP_BACKEND_URL}/searchIsbn/${b.isbn13}`).then(res => res.json()).then(isbnData => {
                         setNewBooks(prevBooks => 
                              [...new Set([...prevBooks,isbnData])])
                     })    
