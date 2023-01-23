@@ -1,7 +1,5 @@
-const {fetch} = require ('cross-fetch')
 import axios from 'axios'
-
-const { response } = require('express')
+const cors = require('cors')
 const express = require('express')
 const app = express()
 
