@@ -9,6 +9,7 @@ const api1 = "https://api.itbook.store/1.0/search/"
 const api2 = "https://api.itbook.store/1.0/books/"
 const downloadUrl = "https://www.dbooks.org/api/book/"
 
+app.use(cors())
 
 app.get("/", (req,res)=>{
     res.send("Hello");
