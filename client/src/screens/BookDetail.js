@@ -25,7 +25,7 @@ function BookDetail() {
 
 let download = async () => {
   setGetting(prev=>true)
-  fetch(`download/${book?.isbn10}`).then(res=> res.json()).then(data => {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/download/${book?.isbn10}`).then(res=> res.json()).then(data => {
     setDownloadLink(prev=>data.download)
     console.log(data.download);
     setGetting(prev=>false)
